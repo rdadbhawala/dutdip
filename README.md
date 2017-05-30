@@ -10,9 +10,18 @@ Enter at your own peril. This pattern doesn't follow some of the recommended pat
 * Key stages in the evolution of this design will be tagged as a "release".
 * Documentation will be added to this readme file explaining these releases.
 
-## Terminolog & Code Hints
+## Terminology & Code Hints
 * Service: an element in the 'business logic layer'.
 * Dependency: an element consumed by the service.
 * For our discussion, Service and Dependency reside in different packages. In reality, Dependencies may be in a different repository altogether. Package separation is adequate to represent that.
 * At each release, we will evaluate Achievements, Issues and Plans.
 
+# v0.1
+Achievements
+* Created a BusinessService that depends on DataAccessLayer
+* Invoked from Main
+Issues
+* Tight Coupling: Main to BusinessService & DataAccessLayer, and BusinessService to DataAccessLayer
+Plans
+* Create interfaces in model package for loose coupling
+* Create "New" functions to instantiate Service and Dependency in respective package.
