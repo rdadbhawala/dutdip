@@ -20,8 +20,10 @@ Enter at your own peril. This pattern doesn't follow some of the recommended pat
 Achievements
 * Created a BusinessService that depends on DataAccessLayer
 * Invoked from Main
+
 Issues
 * Tight Coupling: Main to BusinessService & DataAccessLayer, and BusinessService to DataAccessLayer
+
 Plans
 * Create interfaces in model package for loose coupling
 * Create "New" functions to instantiate Service and Dependency in respective package.
