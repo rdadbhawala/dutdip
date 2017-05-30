@@ -6,6 +6,12 @@ import (
 	"github.com/rdadbhawala/dutdip/dependency"
 )
 
+func NewBusinessService() *BusinessService {
+	return &BusinessService{
+		Dal: dependency.NewDataAccessLayer(),
+	}
+}
+
 type BusinessService struct {
 	Dal *dependency.DataAccessLayer
 }
