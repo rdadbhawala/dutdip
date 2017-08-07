@@ -15,7 +15,7 @@ func NewBusinessService() model.BusinessService {
 }
 
 type businessServiceImpl struct {
-	Dal *dependency.DataAccessLayer
+	Dal model.DataAccessLayer
 }
 
 func (b *businessServiceImpl) BusinessMethod1() {

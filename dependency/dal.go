@@ -1,14 +1,18 @@
 package dependency
 
-import "fmt"
+import (
+	"fmt"
 
-func NewDataAccessLayer() *DataAccessLayer {
-	return &DataAccessLayer{}
+	"github.com/rdadbhawala/dutdip/model"
+)
+
+func NewDataAccessLayer() model.DataAccessLayer {
+	return &dalImpl{}
 }
 
-type DataAccessLayer struct{}
+type dalImpl struct{}
 
-func (d *DataAccessLayer) DataMethod1() {
+func (d *dalImpl) DataMethod1() {
 	defer fmt.Println("\tDataMethod1 End")
 	fmt.Println("\tDataMethod1 Start")
 }
