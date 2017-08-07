@@ -18,8 +18,8 @@ Enter at your own peril. This pattern doesn't follow some of the recommended pat
 
 # v0.1
 Achievements
-* Created a BusinessService that depends on DataAccessLayer
-* Invoked from Main
+* Created a [BusinessService](https://github.com/rdadbhawala/dutdip/blob/9362e5f67c33288da543acd9f96469b7aef5db62/service/businessService.go) that depends on [DataAccessLayer](https://github.com/rdadbhawala/dutdip/blob/9362e5f67c33288da543acd9f96469b7aef5db62/dependency/dal.go)
+* Invoked from [Main](https://github.com/rdadbhawala/dutdip/blob/9362e5f67c33288da543acd9f96469b7aef5db62/main/main.go)
 
 Issues
 * Tight Coupling: Main to BusinessService & DataAccessLayer, and BusinessService to DataAccessLayer
@@ -30,9 +30,9 @@ Plans
 
 # v0.2
 Achievements
-* Created Interfaces for BusinessService and DataAccessLayer
-* Made implementations of interface private to the respective package
-* Added a constructor 'New' function to instantiate Service and Dependency
+* Created [Interfaces](https://github.com/rdadbhawala/dutdip/blob/474398b5f8c21c01d85cf970ed44bbbccbc2dbb6/model/interfaces.go) for BusinessService and DataAccessLayer
+* Made implementations of interface private to the respective package: [Service](https://github.com/rdadbhawala/dutdip/blob/474398b5f8c21c01d85cf970ed44bbbccbc2dbb6/service/businessService.go#L17) and [Dependency](https://github.com/rdadbhawala/dutdip/blob/474398b5f8c21c01d85cf970ed44bbbccbc2dbb6/dependency/dal.go#L13)
+* Added a constructor 'New' function to instantiate Service and Dependency: [Service](https://github.com/rdadbhawala/dutdip/blob/474398b5f8c21c01d85cf970ed44bbbccbc2dbb6/service/businessService.go#L11) and [Dependency](https://github.com/rdadbhawala/dutdip/blob/474398b5f8c21c01d85cf970ed44bbbccbc2dbb6/dependency/dal.go#L9)
 
 Issues
 * The Service package is still tightly coupled with Dependency. Though service.businessServiceImpl refers to the dependency by its interface, the "NewBusinessService" function still needs to know the actual dependency.
@@ -40,4 +40,4 @@ Issues
 * As long as the Service package refers to the Dependency package, 'clean' loose coupling can't be achieved.
 
 Plans
-* Let us try to overcome this limitation by passing the function as a parameter to the NewBusinessService method.
+* Let us try to overcome this limitation by passing the dependency itself as a parameter to the New function
