@@ -27,3 +27,17 @@ Issues
 Plans
 * Create interfaces in model package for loose coupling
 * Create "New" functions to instantiate Service and Dependency in respective package.
+
+# v0.2
+Achievements
+* Created Interfaces for BusinessService and DataAccessLayer
+* Made implementations of interface private to the respective package
+* Added a constructor 'New' function to instantiate Service and Dependency
+
+Issues
+* The Service package is still tightly coupled with Dependency. Though service.businessServiceImpl refers to the dependency by its interface, the "NewBusinessService" function still needs to know the actual dependency.
+* The import statement reflects the tight-coupling of service package with the dependency package.
+* As long as the Service package refers to the Dependency package, 'clean' loose coupling can't be achieved.
+
+Plans
+* Let us try to overcome this limitation by passing the function as a parameter to the NewBusinessService method.
