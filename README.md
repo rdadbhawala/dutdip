@@ -16,7 +16,7 @@ Enter at your own peril. This pattern doesn't follow some of the recommended pat
 * For our discussion, Service and Dependency reside in different packages. In reality, Dependencies may be in a different repository altogether. Package separation is adequate to represent that.
 * At each release, we will evaluate Achievements, Issues and Plans.
 
-# v0.1
+# v0.1: [Compare View](https://github.com/rdadbhawala/dutdip/compare/v0.0...v0.1)
 Achievements
 * Created a [BusinessService](https://github.com/rdadbhawala/dutdip/blob/9362e5f67c33288da543acd9f96469b7aef5db62/service/businessService.go) that depends on [DataAccessLayer](https://github.com/rdadbhawala/dutdip/blob/9362e5f67c33288da543acd9f96469b7aef5db62/dependency/dal.go)
 * Invoked from [Main](https://github.com/rdadbhawala/dutdip/blob/9362e5f67c33288da543acd9f96469b7aef5db62/main/main.go)
@@ -28,7 +28,7 @@ Plans
 * Create interfaces in model package for loose coupling
 * Create "New" functions to instantiate Service and Dependency in respective package.
 
-# v0.2
+# v0.2: [Compare View](https://github.com/rdadbhawala/dutdip/compare/v0.1...v0.2)
 Achievements
 * Created [Interfaces](https://github.com/rdadbhawala/dutdip/blob/474398b5f8c21c01d85cf970ed44bbbccbc2dbb6/model/interfaces.go) for BusinessService and DataAccessLayer
 * Made implementations of interface private to the respective package: [Service](https://github.com/rdadbhawala/dutdip/blob/474398b5f8c21c01d85cf970ed44bbbccbc2dbb6/service/businessService.go#L17) and [Dependency](https://github.com/rdadbhawala/dutdip/blob/474398b5f8c21c01d85cf970ed44bbbccbc2dbb6/dependency/dal.go#L13)
@@ -41,3 +41,19 @@ Issues
 
 Plans
 * Let us try to overcome this limitation by passing the dependency itself as a parameter to the New function
+
+# v0.3: [Compare View](https://github.com/rdadbhawala/dutdip/compare/v0.2...v0.3)
+Achievements
+* Service package's tight coupling with Dependency package removed.
+* Main method initializes the dependency and passes it as a parameter.
+* Enables mocking of DataAccessLayer in the BusinessService.
+
+Issues
+* Every instantiation of BusinessService will require the Dependency to be passed as a parameter.
+* If a new dependency is added, every invocation of NewBusinessService will also have to be updated. This implies breaking changes in code every time the dependencies change.
+* Dependency is initialized even if it is not utilized. This challenge exists even in case of v0.2.
+--* Underlying resources of the dependency get allocated (eg: eatabase connection is opened) even if it is not utilized. It is our responsibility to use the resources in an optimum manner. Such overheads should be avoided. Resources like database connections are expensive and shouldn't be misused.
+--* This can be overcome with lazy initialization check on every method of the dependency. This, however, is challenging to implement and easy to forget for new methods. This pattern will have higher maintainance effort.
+
+Plans
+* Indicate the challenge of unutilized dependencies.

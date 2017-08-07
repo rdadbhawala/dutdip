@@ -1,8 +1,11 @@
 package main
 
-import "github.com/rdadbhawala/dutdip/service"
+import (
+	"github.com/rdadbhawala/dutdip/dependency"
+	"github.com/rdadbhawala/dutdip/service"
+)
 
 func main() {
-	b := service.NewBusinessService()
+	b := service.NewBusinessService(dependency.NewDataAccessLayer())
 	b.BusinessMethod1()
 }

@@ -3,14 +3,13 @@ package service
 import (
 	"fmt"
 
-	"github.com/rdadbhawala/dutdip/dependency"
 	"github.com/rdadbhawala/dutdip/model"
 )
 
 // NewBusinessService returns an instance of BusinessService
-func NewBusinessService() model.BusinessService {
+func NewBusinessService(dal model.DataAccessLayer) model.BusinessService {
 	return &businessServiceImpl{
-		Dal: dependency.NewDataAccessLayer(),
+		Dal: dal,
 	}
 }
 
