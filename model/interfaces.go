@@ -2,7 +2,7 @@ package model
 
 // BusinessService ...
 type BusinessService interface {
-	BusinessMethod1()
+	BusinessMethod1(callDal bool)
 }
 
 // DataAccessLayer is interface for DAL

@@ -17,8 +17,10 @@ type businessServiceImpl struct {
 	Dal model.DataAccessLayer
 }
 
-func (b *businessServiceImpl) BusinessMethod1() {
+func (b *businessServiceImpl) BusinessMethod1(callDal bool) {
 	defer fmt.Println("BusinessMethod1 End")
 	fmt.Println("BusinessMethod1 Start")
-	b.Dal.DataMethod1()
+	if callDal {
+		b.Dal.DataMethod1()
+	}
 }

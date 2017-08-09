@@ -6,13 +6,15 @@ import (
 	"github.com/rdadbhawala/dutdip/model"
 )
 
+// NewDataAccessLayer returns a new instance of DAL
 func NewDataAccessLayer() model.DataAccessLayer {
+	fmt.Println("\tDal Initialization")
 	return &dalImpl{}
 }
 
 type dalImpl struct{}
 
 func (d *dalImpl) DataMethod1() {
-	defer fmt.Println("\tDataMethod1 End")
-	fmt.Println("\tDataMethod1 Start")
+	defer fmt.Println("\t\tDataMethod1 End")
+	fmt.Println("\t\tDataMethod1 Start")
 }
