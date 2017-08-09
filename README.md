@@ -15,6 +15,8 @@ Enter at your own peril. This pattern doesn't follow some of the recommended pat
 * Dependency: an element consumed by the service.
 * For our discussion, Service and Dependency reside in different packages. In reality, Dependencies may be in a different repository altogether. Package separation is adequate to represent that.
 * At each release, we will evaluate Achievements, Issues and Plans.
+* Run the code with the command to see simple Println output reflecting code behavior:
+  `go run ./main/main.go`
 
 # v0.1: [Compare View](https://github.com/rdadbhawala/dutdip/compare/v0.0...v0.1)
 Achievements
@@ -73,3 +75,15 @@ This is probably a good time to take a step back and define the objectives for D
   Also, as a responsible software engineer, I want to utilize resources only if I have to use them. Opening a connection has its costs: the cost to initialize connection objects, establishing communication and handshake with the database, implicit 'transaction', and of course there are processing and memory costs to be considered.
 
 I hope the above paragraphs outline a clear set of expectations. We will now go through a set of convoluted code changes to finally arrive at the DUTDIP, the pattern that I've been told we shouldn't be using.
+
+# v0.5: [Unexpected Dependency Initialization](https://github.com/rdadbhawala/dutdip/compare/v0.4...v0.5)
+Achievements
+* BusinessService interface was updated to take a bool parameter, which dictates invocation of DAL.
+* Some print statements were added to reflect behavior of the code.
+
+Issues
+* According to the order of output statements, the dependency is getting initialized before the Service itself. That just doesn't sound right at all.
+* Also, the second invocation of the BusinessMethod1 shows that even though the dependency was not invoked, it was certainly initialized.
+
+Plans
+* Let us now understand the challenge of a new dependency.

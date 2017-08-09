@@ -8,7 +8,7 @@ import (
 
 // NewDataAccessLayer returns a new instance of DAL
 func NewDataAccessLayer() model.DataAccessLayer {
-	fmt.Println("\tDal Initialization")
+	fmt.Println("\tDataAccessLayer Initialization")
 	return &dalImpl{}
 }
 

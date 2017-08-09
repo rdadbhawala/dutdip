@@ -8,6 +8,7 @@ import (
 
 // NewBusinessService returns an instance of BusinessService
 func NewBusinessService(dal model.DataAccessLayer) model.BusinessService {
+	fmt.Println("BusinessService Initialization")
 	return &businessServiceImpl{
 		Dal: dal,
 	}
