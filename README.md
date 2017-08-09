@@ -52,8 +52,8 @@ Issues
 * Every instantiation of BusinessService will require the Dependency to be passed as a parameter.
 * If a new dependency is added, every invocation of NewBusinessService will also have to be updated. This implies breaking changes in code every time the dependencies change.
 * Dependency is initialized even if it is not utilized. This challenge exists even in case of v0.2.
---* Underlying resources of the dependency get allocated (eg: eatabase connection is opened) even if it is not utilized. It is our responsibility to use the resources in an optimum manner. Such overheads should be avoided. Resources like database connections are expensive and shouldn't be misused.
---* This can be overcome with lazy initialization check on every method of the dependency. This, however, is challenging to implement and easy to forget for new methods. This pattern will have higher maintainance effort.
+  * Underlying resources of the dependency get allocated (eg: eatabase connection is opened) even if it is not utilized. It is our responsibility to use the resources in an optimum manner. Such overheads should be avoided. Resources like database connections are expensive and shouldn't be misused.
+  * This can be overcome with lazy initialization check on every method of the dependency. This, however, is challenging to implement and easy to forget for new methods. This pattern will have higher maintainance effort.
 
 Plans
 * Indicate the challenge of unutilized dependencies.
