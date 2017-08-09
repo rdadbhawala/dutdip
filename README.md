@@ -61,11 +61,15 @@ Plans
 # v0.4: Objectives of Dependency Injection
 This is probably a good time to take a step back and define the objectives for Dependency Injection.
 * Dependencies be injected
+  
   This means that when a particular element (or a component) makes calls to a different subsystem to achieve its results, then such a dependency should be injected into the element, and not instantiated/ created by the element itself. This obviously is the most basic and principle expectation from a Dependency Injection framework.
 * Prevent breaking changes
+
   Should addition of more dependencies or new relationships in an element/ component lead to breaking channges in the code already written? I think not. While I acknowledge that requirements change, I believe in the principle that good software design, by definition, shouldn't require you to look backwards. Rather, it allows you to look forward freely, unconstrained by the work already done. In that sense, if there are changes in the dependencies of an element, the DI framework should absorb the impact in such a manner that such changes can be incorporated easily.
 * Dependencies are initialized only if required
-  I am a big believer in the pattern that the creator of an element should also be responsible for its destruction. The life cycle of such a dependency should be managed in a clean manner, clearly depicting where the dependency is created and where it is relieved. Several DI frameworks use a constructor based pattern for injecting dependencies. In such a pattern, the dependency is created in a different scope (DI Framework), and is utilized in a different scope (the service). There is ambiguity over who is responsible for the clean up. Also dependencies become members of the Service, which makes the service stateful. If the dependency has a database connection, to take an example, this instance of the service can't be shared across requests.
+
+  I am a big believer in the pattern that the creator of an element should also be responsible for its destruction. The life cycle of such a dependency should be managed in a clean manner, clearly depicting where the dependency is created and where it is relieved. Several DI frameworks use a constructor based pattern for injecting dependencies. In such a pattern, the dependency is created in a different scope (DI Framework), and is utilized in a different scope (the service). There is ambiguity over who is responsible for the clean up. If dependencies become members of the Service, it makes the service stateful. If the dependency has a database connection, to take an example, this instance of the service can't be shared across requests.
+  
   Also, as a responsible software engineer, I want to utilize resources only if I have to use them. Opening a connection has its costs: the cost to initialize connection objects, establishing communication and handshake with the database, implicit 'transaction', and of course there are processing and memory costs to be considered.
 
-I hope the above paragraphs outline a clear set of expectations. We will now go through a convoluted set of code changes to finally arrive at the dutdip, the pattern that I've been told we shouldn't be using.
+I hope the above paragraphs outline a clear set of expectations. We will now go through a set of convoluted code changes to finally arrive at the DUTDIP, the pattern that I've been told we shouldn't be using.
