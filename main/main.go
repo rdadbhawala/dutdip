@@ -8,9 +8,9 @@ import (
 )
 
 func main() {
-	b := service.NewBusinessService(dependency.NewDataAccessLayer(), dependency.NewAnotherDal())
+	b := service.NewBusinessService(dependency.NewDataAccessLayer())
 	b.BusinessMethod1(true)
 	fmt.Println()
-	b = service.NewBusinessService(dependency.NewDataAccessLayer(), dependency.NewAnotherDal())
+	b = service.NewBusinessService(dependency.NewDataAccessLayer())
 	b.BusinessMethod1(false)
 }
