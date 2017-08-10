@@ -87,3 +87,18 @@ Issues
 
 Plans
 * Let us now understand the challenge of a new dependency.
+
+# v0.6: [Changes in Dependency Leads to Breaking Changes](https://github.com/rdadbhawala/dutdip/compare/v0.5...v0.6)
+Achievements
+* A new dependency is introduced in the same manner as the existing one.
+* It is passed as a parameter to the NewBusinessService method.
+
+Issues
+* With the signature of the NewBusinessService changing, it leads to breaking changes at every location that it is consumed.
+* 'main' function in the sample code had to be fixed to align with the new signature.
+* As above, dependencies are initialized before the service, even if they are not utilized.
+
+Plans
+* One mechanism to overcome the 2 challenges explained in v0.5 and v0.6 is pass the "New" function itself as a parameter.
+* In this sense, the Service has access to the Dependency factory (instead of an instance of a Dependency).
+* We will revert back to a single dependency to showcase this solution.

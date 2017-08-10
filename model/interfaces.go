@@ -9,3 +9,7 @@ type BusinessService interface {
 type DataAccessLayer interface {
 	DataMethod1()
 }
+
+type AnotherDal interface {
+	DalMethod1()
+}
