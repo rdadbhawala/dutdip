@@ -7,21 +7,22 @@ import (
 )
 
 // NewBusinessService returns an instance of BusinessService
-func NewBusinessService(dal model.DataAccessLayer) model.BusinessService {
+func NewBusinessService(dalFunc model.FuncNewDataAccessLayer) model.BusinessService {
 	fmt.Println("BusinessService Initialization")
 	return &businessServiceImpl{
-		Dal: dal,
+		DalFunc: dalFunc,
 	}
 }
 
 type businessServiceImpl struct {
-	Dal model.DataAccessLayer
+	DalFunc model.FuncNewDataAccessLayer
 }
 
 func (b *businessServiceImpl) BusinessMethod1(callDal bool) {
 	defer fmt.Println("BusinessMethod1 End")
 	fmt.Println("BusinessMethod1 Start")
 	if callDal {
-		b.Dal.DataMethod1()
+		dal := b.DalFunc()
+		dal.DataMethod1()
 	}
 }

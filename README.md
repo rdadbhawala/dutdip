@@ -102,3 +102,16 @@ Plans
 * One mechanism to overcome the 2 challenges explained in v0.5 and v0.6 is pass the "New" function itself as a parameter.
 * In this sense, the Service has access to the Dependency factory (instead of an instance of a Dependency).
 * We will revert back to a single dependency to showcase this solution.
+
+# v0.7 [Factory Not Instance](https://github.com/rdadbhawala/dutdip/compare/v0.5...v0.6)
+Achievements
+* Passed the "New" function as a parameter.
+* Service invokes the function to create an instance of the dependency only when it wants to consume the dependency.
+* Dependency is now initialized after the Service, and only if required.
+
+Issues
+* We still face the challenge of changes in dependencies. If another dependency is added, it leads to breaking changes in code. (I will not create an example for this issue, as it is the same as described in v0.6).
+* There is nothing wrong in passing functions. Functions are first class members of the codebase. However, functions don't lend themselves to easy reuse. Code constructs such as Inheritance and Composition do.
+
+Plans
+* To prevent breaking changes in the method signature, we must gather the parameters into a single element. Let us check if we can put factory functions in a structure.
