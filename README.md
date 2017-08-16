@@ -103,7 +103,7 @@ Plans
 * In this sense, the Service has access to the Dependency factory (instead of an instance of a Dependency).
 * We will revert back to a single dependency to showcase this solution.
 
-# v0.7 [Factory Not Instance](https://github.com/rdadbhawala/dutdip/compare/v0.5...v0.6)
+# v0.7 [Factory Not Instance](https://github.com/rdadbhawala/dutdip/compare/v0.6...v0.7)
 Achievements
 * Passed the "New" function as a parameter.
 * Service invokes the function to create an instance of the dependency only when it wants to consume the dependency.
@@ -115,3 +115,15 @@ Issues
 
 Plans
 * To prevent breaking changes in the method signature, we must gather the parameters into a single element. Let us check if we can put factory functions in a structure.
+
+
+# v0.8 [Function Factory](https://github.com/rdadbhawala/dutdip/compare/v0.7...v0.8)
+Achievements
+* Created a structure which encapsulates the Factories that BusinessService is interested in.
+* Main method creates the Function Factory. Main method, or rather, the Layer housing the Main Method, is the appropriate place for orchestration. It is responsible for creating the right environment in which the service must be executed.
+
+Issues
+* Currently, NewBusinessService has access to the entire factory, not just the function that it needs. I don't think its a great idea that NewBusinessService sees more than it needs to.
+
+Plans
+* Let us first check the impact of a new dependency on this piece of code.

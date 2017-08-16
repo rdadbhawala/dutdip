@@ -7,10 +7,10 @@ import (
 )
 
 // NewBusinessService returns an instance of BusinessService
-func NewBusinessService(dalFunc model.FuncNewDataAccessLayer) model.BusinessService {
+func NewBusinessService(ff *model.FunctionFactory) model.BusinessService {
 	fmt.Println("BusinessService Initialization")
 	return &businessServiceImpl{
-		DalFunc: dalFunc,
+		DalFunc: ff.NewDataAccessLayer,
 	}
 }
 
