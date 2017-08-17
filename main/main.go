@@ -11,6 +11,7 @@ import (
 func main() {
 	ff := &model.FunctionFactory{
 		NewDataAccessLayer: dependency.NewDataAccessLayer,
+		NewAnotherDal:      dependency.NewAnotherDal,
 	}
 	b := service.NewBusinessService(ff)
 	b.BusinessMethod1(true)

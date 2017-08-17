@@ -18,7 +18,9 @@ Enter at your own peril. This pattern doesn't follow some of the recommended pat
 * Run the code with the command to see simple Println output reflecting code behavior:
   `go run ./main/main.go`
 
-# v0.1: [Compare View](https://github.com/rdadbhawala/dutdip/compare/v0.0...v0.1)
+# Releases
+
+## v0.1: [Compare View](https://github.com/rdadbhawala/dutdip/compare/v0.0...v0.1)
 Achievements
 * Created a [BusinessService](https://github.com/rdadbhawala/dutdip/blob/9362e5f67c33288da543acd9f96469b7aef5db62/service/businessService.go) that depends on [DataAccessLayer](https://github.com/rdadbhawala/dutdip/blob/9362e5f67c33288da543acd9f96469b7aef5db62/dependency/dal.go)
 * Invoked from [Main](https://github.com/rdadbhawala/dutdip/blob/9362e5f67c33288da543acd9f96469b7aef5db62/main/main.go)
@@ -30,7 +32,7 @@ Plans
 * Create interfaces in model package for loose coupling
 * Create "New" functions to instantiate Service and Dependency in respective package.
 
-# v0.2: [Compare View](https://github.com/rdadbhawala/dutdip/compare/v0.1...v0.2)
+## v0.2: [Compare View](https://github.com/rdadbhawala/dutdip/compare/v0.1...v0.2)
 Achievements
 * Created [Interfaces](https://github.com/rdadbhawala/dutdip/blob/474398b5f8c21c01d85cf970ed44bbbccbc2dbb6/model/interfaces.go) for BusinessService and DataAccessLayer
 * Made implementations of interface private to the respective package: [Service](https://github.com/rdadbhawala/dutdip/blob/474398b5f8c21c01d85cf970ed44bbbccbc2dbb6/service/businessService.go#L17) and [Dependency](https://github.com/rdadbhawala/dutdip/blob/474398b5f8c21c01d85cf970ed44bbbccbc2dbb6/dependency/dal.go#L13)
@@ -44,7 +46,7 @@ Issues
 Plans
 * Let us try to overcome this limitation by passing the dependency itself as a parameter to the New function
 
-# v0.3: [Compare View](https://github.com/rdadbhawala/dutdip/compare/v0.2...v0.3)
+## v0.3: [Compare View](https://github.com/rdadbhawala/dutdip/compare/v0.2...v0.3)
 Achievements
 * Service package's tight coupling with Dependency package removed.
 * Main method initializes the dependency and passes it as a parameter.
@@ -60,7 +62,7 @@ Issues
 Plans
 * Indicate the challenge of unutilized dependencies.
 
-# v0.4: Objectives of Dependency Injection
+## v0.4: Objectives of Dependency Injection
 This is probably a good time to take a step back and define the objectives for Dependency Injection.
 * Dependencies be injected
   
@@ -76,7 +78,7 @@ This is probably a good time to take a step back and define the objectives for D
 
 I hope the above paragraphs outline a clear set of expectations. We will now go through a set of convoluted code changes to finally arrive at the DUTDIP, the pattern that I've been told we shouldn't be using.
 
-# v0.5: [Unexpected Dependency Initialization](https://github.com/rdadbhawala/dutdip/compare/v0.4...v0.5)
+## v0.5: [Unexpected Dependency Initialization](https://github.com/rdadbhawala/dutdip/compare/v0.4...v0.5)
 Achievements
 * BusinessService interface was updated to take a bool parameter, which dictates invocation of DAL.
 * Some print statements were added to reflect behavior of the code.
@@ -88,7 +90,7 @@ Issues
 Plans
 * Let us now understand the challenge of a new dependency.
 
-# v0.6: [Changes in Dependency Leads to Breaking Changes](https://github.com/rdadbhawala/dutdip/compare/v0.5...v0.6)
+## v0.6: [Changes in Dependency Leads to Breaking Changes](https://github.com/rdadbhawala/dutdip/compare/v0.5...v0.6)
 Achievements
 * A new dependency is introduced in the same manner as the existing one.
 * It is passed as a parameter to the NewBusinessService method.
@@ -103,7 +105,7 @@ Plans
 * In this sense, the Service has access to the Dependency factory (instead of an instance of a Dependency).
 * We will revert back to a single dependency to showcase this solution.
 
-# v0.7 [Factory Not Instance](https://github.com/rdadbhawala/dutdip/compare/v0.6...v0.7)
+## v0.7 [Factory Not Instance](https://github.com/rdadbhawala/dutdip/compare/v0.6...v0.7)
 Achievements
 * Passed the "New" function as a parameter.
 * Service invokes the function to create an instance of the dependency only when it wants to consume the dependency.
@@ -117,7 +119,7 @@ Plans
 * To prevent breaking changes in the method signature, we must gather the parameters into a single element. Let us check if we can put factory functions in a structure.
 
 
-# v0.8 [Function Factory](https://github.com/rdadbhawala/dutdip/compare/v0.7...v0.8)
+## v0.8 [Function Factory](https://github.com/rdadbhawala/dutdip/compare/v0.7...v0.8)
 Achievements
 * Created a structure which encapsulates the Factories that BusinessService is interested in.
 * Main method creates the Function Factory. Main method, or rather, the Layer housing the Main Method, is the appropriate place for orchestration. It is responsible for creating the right environment in which the service must be executed.
@@ -127,3 +129,11 @@ Issues
 
 Plans
 * Let us first check the impact of a new dependency on this piece of code.
+
+## v0.9 [Function Factory Again](https://github.com/rdadbhawala/dutdip/compare/v0.8...v0.9)
+Achievements
+* There was no change in the signature of the NewBusinessService Function. As a result, there was no breaking change in its invocation. If you have ever created a Request class to handle the infinite parameters that you were passing to a method, you know why this happened.
+* The change was much simpler to implement compared to v0.6 because there were no breaking changes.
+* The dependencies are initialized only when required in the workflow.
+
+Issues
