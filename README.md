@@ -137,3 +137,7 @@ Achievements
 * The dependencies are initialized only when required in the workflow.
 
 Issues
+* Functions are not as flexible or re-usable as Structures.
+
+Plans
+* We will try to discover different ways to check re-usability of the Factory Function.
