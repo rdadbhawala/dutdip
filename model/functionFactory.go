@@ -12,18 +12,18 @@ type FunctionFactory struct {
 	NewAnotherDal      FuncNewAnotherDal
 }
 
-// FactoryNewDataAccessLayer ...
-type FactoryNewDataAccessLayer struct {
-	NewDataAccessLayer FuncNewDataAccessLayer
-}
+// // FactoryNewDataAccessLayer ...
+// type FactoryNewDataAccessLayer struct {
+// 	NewDataAccessLayer FuncNewDataAccessLayer
+// }
 
-// FactoryNewAnotherDal ...
-type FactoryNewAnotherDal struct {
-	NewAnotherDal FuncNewAnotherDal
-}
+// // FactoryNewAnotherDal ...
+// type FactoryNewAnotherDal struct {
+// 	NewAnotherDal FuncNewAnotherDal
+// }
 
-// AllFactory ...
-type AllFactory struct {
-	FactoryNewDataAccessLayer
-	FactoryNewAnotherDal
-}
+// // AllFactory ...
+// type AllFactory struct {
+// 	FactoryNewDataAccessLayer
+// 	FactoryNewAnotherDal
+// }
