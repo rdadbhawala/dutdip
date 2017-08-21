@@ -1,16 +1,6 @@
 package dependency
 
-import (
-	"fmt"
-
-	"github.com/rdadbhawala/dutdip/model"
-)
-
-// NewDataAccessLayer returns a new instance of DAL
-func NewDataAccessLayer() model.DataAccessLayer {
-	fmt.Println("\tDataAccessLayer Initialization")
-	return &dalImpl{}
-}
+import "fmt"
 
 type dalImpl struct{}
 

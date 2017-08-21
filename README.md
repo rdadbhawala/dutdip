@@ -152,7 +152,24 @@ Issues
 * Factories are static methods (a package method is a static method). And static is not 'design-friendly'. Static elements do not adapt to other structures easily. Often, static elements have been wrapped in a separate layer to become compatibility with other components, like the Adapter Pattern. Static elements solve the problem today, but create problems tomorrow.
   * In the event that a static factory method needs to store some state, it will have to rely on static/ package variables. Static variables never get garbage collected, and it is very difficult to subject them to life cycle management. There are thread-safety constraints that must be addressed.
 * While the factory method is defined in the respective package, orchestration in the main package is a bit more than what I'd want to do, specially the part of explicit assignment to structure member.
+* By the way, this release doesn't compile.
 
 Plans
 * In the next attempt, I will try to create factories in the form of reusable structures, and we will then discuss some interesting, long-term, design benefits of these changes.
 
+# DUTDIP
+Releases now onwards take you towards the DUTDIP. To run the code you need a different command:
+ `go run ./main/main.go ./main/dutdip.go`
+
+## v1.0 [Introducing DUTDIP](https://github.com/rdadbhawala/dutdip/compare/v0.9.1...v1.0)
+Achievements:
+* In earlier commits, removed some unwanted code and for now, commented the second dependency.
+* Since we are re-wiring the DI, this commit has several changes.
+* List of Design changes
+  * Created Interface for Factory in model package. Embedded this in the SuperFactory interface.
+  * Factory implementation is in the dependency package. This implementation is public.
+  * Main package creates a super-factory implementation embedding this factory. The main method does a simple initialization of this structure.
+  * BusinessService is redesigned to accept the super-factory by its interface, and uses it to create the dependency.
+
+Plans:
+* Add a new dependency: resurrecting AnotherDal

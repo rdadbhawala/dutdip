@@ -10,6 +10,16 @@ type DataAccessLayer interface {
 	DataMethod1()
 }
 
+// DataAccessLayerFactory ...
+type DataAccessLayerFactory interface {
+	CreateDal() DataAccessLayer
+}
+
+// SuperFactory ...
+type SuperFactory interface {
+	DataAccessLayerFactory
+}
+
 // // AnotherDal is another dependency
 // type AnotherDal interface {
 // 	DalMethod1()
