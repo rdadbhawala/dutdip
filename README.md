@@ -173,3 +173,20 @@ Achievements:
 
 Plans:
 * Add a new dependency: resurrecting AnotherDal
+
+## v1.1 [Adding New Dependency](https://github.com/rdadbhawala/dutdip/compare/v1.0...v1.1)
+Achievements:
+* Code changes:
+  * Resurrected AnotherDal and created AnotherDalFactory
+  * Added AnotherDalFactory to SuperFactory and AnotherDalFactoryImpl to superFactoryImpl
+  * Updated BusinessService to call AnotherDal
+* Changes to SuperFactory and superFactoryImpl were minimal; one line each.
+* No impact on main, and no impact on service initialization.
+
+Issues:
+* Does BusinessService need to see SuperFactory? Or should it see only the dependencies it needs?
+
+Plans
+* Add BusinessService itself to the SuperFactory & change its initialization
+* Change BusinessService intialization to work without SuperFactory
+

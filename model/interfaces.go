@@ -18,9 +18,15 @@ type DataAccessLayerFactory interface {
 // SuperFactory ...
 type SuperFactory interface {
 	DataAccessLayerFactory
+	AnotherDalFactory
 }
 
-// // AnotherDal is another dependency
-// type AnotherDal interface {
-// 	DalMethod1()
-// }
+// AnotherDal is another dependency
+type AnotherDal interface {
+	DalMethod1()
+}
+
+// AnotherDalFactory ...
+type AnotherDalFactory interface {
+	CreateAnotherDal() AnotherDal
+}

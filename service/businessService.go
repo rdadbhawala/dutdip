@@ -11,13 +11,11 @@ func NewBusinessService(ff model.SuperFactory) model.BusinessService {
 	fmt.Println("BusinessService Initialization")
 	return &businessServiceImpl{
 		SuperFac: ff,
-		// AnotherDalFunc: ff.NewAnotherDal,
 	}
 }
 
 type businessServiceImpl struct {
 	SuperFac model.SuperFactory
-	// AnotherDalFunc model.FuncNewAnotherDal
 }
 
 func (b *businessServiceImpl) BusinessMethod1(callDal bool) {
@@ -26,8 +24,8 @@ func (b *businessServiceImpl) BusinessMethod1(callDal bool) {
 	if callDal {
 		dal := b.SuperFac.CreateDal()
 		dal.DataMethod1()
-		// } else {
-		// 	adal := b.AnotherDalFunc()
-		// 	adal.DalMethod1()
+	} else {
+		adal := b.SuperFac.CreateAnotherDal()
+		adal.DalMethod1()
 	}
 }
