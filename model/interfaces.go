@@ -10,7 +10,7 @@ type DataAccessLayer interface {
 	DataMethod1()
 }
 
-// AnotherDal is another dependency
-type AnotherDal interface {
-	DalMethod1()
-}
+// // AnotherDal is another dependency
+// type AnotherDal interface {
+// 	DalMethod1()
+// }

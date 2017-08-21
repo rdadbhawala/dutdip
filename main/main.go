@@ -3,12 +3,15 @@ package main
 import (
 	"fmt"
 
+	"github.com/rdadbhawala/dutdip/dependency"
+	"github.com/rdadbhawala/dutdip/model"
 	"github.com/rdadbhawala/dutdip/service"
 )
 
 func main() {
-	af := GetAllFactory()
-	ff := &af
+	ff := &model.FunctionFactory{
+		NewDataAccessLayer: dependency.NewDataAccessLayer,
+	}
 	b := service.NewBusinessService(ff)
 	b.BusinessMethod1(true)
 	fmt.Println()
