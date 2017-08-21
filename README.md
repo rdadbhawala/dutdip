@@ -141,3 +141,17 @@ Issues
 
 Plans
 * We will try to discover different ways to check re-usability of the Factory Function.
+
+## v0.9.1 [Function Challenges](https://github.com/rdadbhawala/dutdip/compare/v0.9...v0.9.1)
+Achievements
+* Attempted inheritance of individual factory functions
+
+Issues
+* Factories become reusable (a little bit) if they return structures itself, instead of pointers. However, explicit initialization was required in the composite All-Factory structure.
+* AllFactory can not substitute FunctionFactory even though both support identical method signatures. Such substitution is possible only through interface implementations. However, function types can't be members of an interface. Nor can function types help implement an interface in a structure without a wrapper method.
+* Factories are static methods (a package method is a static method). And static is not 'design-friendly'. Static elements do not adapt to other structures easily. Often, static elements have been wrapped in a separate layer to become compatibility with other components, like the Adapter Pattern. Static elements solve the problem today, but create problems tomorrow.
+  * In the event that a static factory method needs to store some state, it will have to rely on static/ package variables. Static variables never get garbage collected, and it is very difficult to subject them to life cycle management. There are thread-safety constraints that must be addressed.
+* While the factory method is defined in the respective package, orchestration in the main package become a bit more than what I'd expect: explicit assignment to structure member.
+
+Plans
+* In the next attempt, I will try to create factories in the form of reusable structures, and we will then discuss some interesting, long-term, design benefits of these changes.

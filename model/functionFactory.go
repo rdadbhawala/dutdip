@@ -11,3 +11,19 @@ type FunctionFactory struct {
 	NewDataAccessLayer FuncNewDataAccessLayer
 	NewAnotherDal      FuncNewAnotherDal
 }
+
+// FactoryNewDataAccessLayer ...
+type FactoryNewDataAccessLayer struct {
+	NewDataAccessLayer FuncNewDataAccessLayer
+}
+
+// FactoryNewAnotherDal ...
+type FactoryNewAnotherDal struct {
+	NewAnotherDal FuncNewAnotherDal
+}
+
+// AllFactory ...
+type AllFactory struct {
+	FactoryNewDataAccessLayer
+	FactoryNewAnotherDal
+}
