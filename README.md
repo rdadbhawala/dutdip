@@ -190,3 +190,14 @@ Plans
 * Add BusinessService itself to the SuperFactory & change its initialization
 * Change BusinessService intialization to work without SuperFactory
 
+## v1.1.1 [Adding Service to SuperFactory](https://github.com/rdadbhawala/dutdip/compare/v1.1...v1.1.1)
+Achievements
+* Reorganized code to separate business code from DI code
+* BusinessService itself is initialized from the factory.
+* SuperFactory becomes your DI container, the single point of initializing everything in your ecosystem.
+
+Issues
+* SuperFactory itself was passed as a parameter to the NewBusinessService method. (This is something we will discuss later.)
+
+Plans
+* Change BusinessServiceFactory to use only what it needs.

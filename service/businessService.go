@@ -6,14 +6,6 @@ import (
 	"github.com/rdadbhawala/dutdip/model"
 )
 
-// NewBusinessService returns an instance of BusinessService
-func NewBusinessService(ff model.SuperFactory) model.BusinessService {
-	fmt.Println("BusinessService Initialization")
-	return &businessServiceImpl{
-		SuperFac: ff,
-	}
-}
-
 type businessServiceImpl struct {
 	SuperFac model.SuperFactory
 }

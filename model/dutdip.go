@@ -10,6 +10,11 @@ type DataAccessLayerFactory interface {
 	CreateDal() DataAccessLayer
 }
 
+// BusinessServiceFactory ...
+type BusinessServiceFactory interface {
+	NewBusinessService(ff SuperFactory) BusinessService
+}
+
 // SuperFactory ...
 type SuperFactory interface {
 	DataAccessLayerFactory
