@@ -201,3 +201,14 @@ Issues
 
 Plans
 * Change BusinessServiceFactory to use only what it needs.
+
+## v1.1.2 [Refer only what you need](https://github.com/rdadbhawala/dutdip/compare/v1.1.1...v1.1.2)
+Achievements
+* Created a new interface to represent the dependencies needed only by BusinessService. Anything added to SuperFactory will now be hidden from BusinessService.
+* Only the reference to SuperFactory inside BusinessService changed. No impact on any other code.
+
+Issues
+* There's a 'human' limit to how many dependency interfaces you can create.
+
+Plans
+* Let's discuss the state of Dutdip, the opportunities and the challenges.

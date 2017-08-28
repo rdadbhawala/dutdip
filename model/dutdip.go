@@ -15,6 +15,12 @@ type BusinessServiceFactory interface {
 	NewBusinessService(ff SuperFactory) BusinessService
 }
 
+// BusinessServiceDependencies ...
+type BusinessServiceDependencies interface {
+	DataAccessLayerFactory
+	AnotherDalFactory
+}
+
 // SuperFactory ...
 type SuperFactory interface {
 	DataAccessLayerFactory

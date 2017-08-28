@@ -7,7 +7,7 @@ import (
 )
 
 type businessServiceImpl struct {
-	SuperFac model.SuperFactory
+	SuperFac model.BusinessServiceDependencies
 }
 
 func (b *businessServiceImpl) BusinessMethod1(callDal bool) {
