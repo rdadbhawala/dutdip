@@ -6,18 +6,16 @@ import (
 	"github.com/rdadbhawala/dutdip/model"
 )
 
-type businessServiceImpl struct {
-	SuperFac model.BusinessServiceDependencies
-}
+type businessServiceImpl struct{}
 
 func (b *businessServiceImpl) BusinessMethod1(callDal bool) {
 	defer fmt.Println("BusinessMethod1 End")
 	fmt.Println("BusinessMethod1 Start")
 	if callDal {
-		dal := b.SuperFac.CreateDal()
+		dal := model.GetSuperFactory().CreateDal()
 		dal.DataMethod1()
 	} else {
-		adal := b.SuperFac.CreateAnotherDal()
+		adal := model.GetSuperFactory().CreateAnotherDal()
 		adal.DalMethod1()
 	}
 }

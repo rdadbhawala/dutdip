@@ -10,9 +10,7 @@ import (
 type BusinessServiceFactoryImpl struct{}
 
 // NewBusinessService returns an instance of BusinessService
-func (BusinessServiceFactoryImpl) NewBusinessService(ff model.BusinessServiceDependencies) model.BusinessService {
+func (BusinessServiceFactoryImpl) NewBusinessService() model.BusinessService {
 	fmt.Println("BusinessService Initialization")
-	return &businessServiceImpl{
-		SuperFac: ff,
-	}
+	return &businessServiceImpl{}
 }

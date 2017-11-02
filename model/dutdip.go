@@ -12,7 +12,7 @@ type DataAccessLayerFactory interface {
 
 // BusinessServiceFactory ...
 type BusinessServiceFactory interface {
-	NewBusinessService(ff SuperFactory) BusinessService
+	NewBusinessService() BusinessService
 }
 
 // BusinessServiceDependencies ...
@@ -23,6 +23,19 @@ type BusinessServiceDependencies interface {
 
 // SuperFactory ...
 type SuperFactory interface {
+	BusinessServiceFactory
 	DataAccessLayerFactory
 	AnotherDalFactory
+}
+
+var sfSingleton SuperFactory
+
+// GetSuperFactory gets the global SuperFactory
+func GetSuperFactory() SuperFactory {
+	return sfSingleton
+}
+
+// SetSuperFactory sets the global SuperFactory
+func SetSuperFactory(sf SuperFactory) {
+	sfSingleton = sf
 }
