@@ -1,9 +1,9 @@
 # dutdip
 Don't Use This Dependency Injection Pattern (D-U-T-D-I-P)
 
-In the quest for achieving design goals of maintainability, flexibility, extensibility and **_etcetrability_**, I boldly went where no one has gone before, and got kicked out! Nonetheless, I believe this pattern promotes a very high level of loose coupling, and you are free not to use it! 
+In the quest for achieving design goals of maintainability, flexibility, extensibility and **_etcetrability_**, I built this Abstract Factory based pattern, and got beaten up real bad! Nonetheless, I believe this pattern promotes a very high level of loose coupling, and you are free NOT to use it! 
 
-Enter at your own peril. This pattern doesn't follow some of the recommended patterns of GoLang. You might feel offended. However, I don't write code with the assumption that well known patterns are the best solution for my needs. Nor do I assume that I can't do better.
+Enter at your own peril. This pattern doesn't follow some of the recommended patterns of GoLang. However, I don't write code with the assumption that well known patterns are the best solution for my needs. Nor do I assume that I can't do better.
 
 ## Conventions
 * This repository will contain a series of commits that will take services and dependencies through varying mechanisms of orchestration in GoLang.
@@ -20,7 +20,7 @@ Enter at your own peril. This pattern doesn't follow some of the recommended pat
 
 # Releases
 
-## v0.1: [Compare View](https://github.com/rdadbhawala/dutdip/compare/v0.0...v0.1)
+## v0.1: [Lets create the problem to be solved](https://github.com/rdadbhawala/dutdip/compare/v0.0...v0.1)
 Achievements
 * Created a [BusinessService](https://github.com/rdadbhawala/dutdip/blob/9362e5f67c33288da543acd9f96469b7aef5db62/service/businessService.go) that depends on [DataAccessLayer](https://github.com/rdadbhawala/dutdip/blob/9362e5f67c33288da543acd9f96469b7aef5db62/dependency/dal.go)
 * Invoked from [Main](https://github.com/rdadbhawala/dutdip/blob/9362e5f67c33288da543acd9f96469b7aef5db62/main/main.go)
@@ -32,7 +32,7 @@ Plans
 * Create interfaces in model package for loose coupling
 * Create "New" functions to instantiate Service and Dependency in respective package.
 
-## v0.2: [Compare View](https://github.com/rdadbhawala/dutdip/compare/v0.1...v0.2)
+## v0.2: [Interfaces & New Functions](https://github.com/rdadbhawala/dutdip/compare/v0.1...v0.2)
 Achievements
 * Created [Interfaces](https://github.com/rdadbhawala/dutdip/blob/474398b5f8c21c01d85cf970ed44bbbccbc2dbb6/model/interfaces.go) for BusinessService and DataAccessLayer
 * Made implementations of interface private to the respective package: [Service](https://github.com/rdadbhawala/dutdip/blob/474398b5f8c21c01d85cf970ed44bbbccbc2dbb6/service/businessService.go#L17) and [Dependency](https://github.com/rdadbhawala/dutdip/blob/474398b5f8c21c01d85cf970ed44bbbccbc2dbb6/dependency/dal.go#L13)
@@ -46,7 +46,7 @@ Issues
 Plans
 * Let us try to overcome this limitation by passing the dependency itself as a parameter to the New function
 
-## v0.3: [Compare View](https://github.com/rdadbhawala/dutdip/compare/v0.2...v0.3)
+## v0.3: [Shifting the problem to Main](https://github.com/rdadbhawala/dutdip/compare/v0.2...v0.3)
 Achievements
 * Service package's tight coupling with Dependency package removed.
 * Main method initializes the dependency and passes it as a parameter.
@@ -72,7 +72,7 @@ This is probably a good time to take a step back and define the objectives for D
   Should addition of more dependencies or new relationships in an element/ component lead to breaking channges in the code already written? I think not. While I acknowledge that requirements change, I believe in the principle that good software design, by definition, shouldn't require you to look backwards. Rather, it allows you to look forward freely, unconstrained by the work already done. In that sense, if there are changes in the dependencies of an element, the DI framework should absorb the impact in such a manner that such changes can be incorporated easily.
 * Dependencies are initialized only if required
 
-  I am a big believer in the pattern that the creator of an element should also be responsible for its destruction. The life cycle of such a dependency should be managed in a clean manner, clearly depicting where the dependency is created and where it is relieved. Several DI frameworks use a constructor based pattern for injecting dependencies. In such a pattern, the dependency is created in a different scope (DI Framework), and is utilized in a different scope (the service). There is ambiguity over who is responsible for the clean up. If dependencies become members of the Service, it makes the service stateful. If the dependency has a database connection, to take an example, this instance of the service can't be shared across requests.
+  I am a big believer in the pattern that the creator of an element should also be responsible for its destruction. The life cycle of such a dependency should be managed in a clean manner, clearly depicting where the dependency is created and where it is disposed. Several DI frameworks use a constructor based pattern for injecting dependencies. In such a pattern, the dependency is created in a different scope (DI Framework), and is utilized in a different scope (the service). There is ambiguity over who is responsible for the clean up, and when does it occur. If dependencies become members of the Service, it makes the service stateful. If the dependency has a database connection, to take an example, this instance of the service can't be shared across requests.
   
   Also, as a responsible software engineer, I want to utilize resources only if I have to use them. Opening a connection has its costs: the cost to initialize connection objects, establishing communication and handshake with the database, implicit 'transaction', and of course there are processing and memory costs to be considered.
 
