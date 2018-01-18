@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/rdadbhawala/dutdip/samples/inject/library"
-	"github.com/rdadbhawala/dutdip/samples/inject/service"
+	"github.com/rdadbhawala/dutdip/samples/sarulabs/library"
+	"github.com/rdadbhawala/dutdip/samples/sarulabs/service"
 	"github.com/sarulabs/di"
 )
 
