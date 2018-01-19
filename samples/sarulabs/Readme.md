@@ -12,25 +12,9 @@
 * Singletons within a context, means creating a separate scope/ context for each request which doesn't rely on singletons.
 
 ## Benchmark (Singleton)
-`BenchmarkLibrary-4   	20000000	        73.7 ns/op	       0 B/op	       0 allocs/op
+```
+BenchmarkLibrary-4        500000              2601 ns/op            1118 B/op         12 allocs/op
+BenchmarkSingleton-4    20000000                84.5 ns/op             0 B/op          0 allocs/op
 PASS
-ok  	github.com/rdadbhawala/dutdip/samples/sarulabs	2.702s
-Success: Benchmarks passed.`
-
-### With Casting (Singleton)
-`BenchmarkLibrary-4   	20000000	        83.7 ns/op	       0 B/op	       0 allocs/op
-PASS
-ok  	github.com/rdadbhawala/dutdip/samples/sarulabs	2.077s
-Success: Benchmarks passed.`
-
-### With separate scopes
-`BenchmarkLibrary-4   	 1000000	      1146 ns/op	     429 B/op	       5 allocs/op
-PASS
-ok  	github.com/rdadbhawala/dutdip/samples/sarulabs	1.926s
-Success: Benchmarks passed.`
-
-### Request Scope
-`BenchmarkLibrary-4   	  500000	      3064 ns/op	    1118 B/op	      12 allocs/op
-PASS
-ok  	github.com/rdadbhawala/dutdip/samples/sarulabs	2.183s
-Success: Benchmarks passed.`
+ok      github.com/rdadbhawala/dutdip/samples/sarulabs  3.962s
+```

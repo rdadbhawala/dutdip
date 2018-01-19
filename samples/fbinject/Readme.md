@@ -7,7 +7,9 @@
 * May be an error in benchmark test, but current numbers are terrible.
 
 ## Benchmark
-'BenchmarkLibrary-4   	   10000	   3716104 ns/op	  160497 B/op	   20008 allocs/op
+```go
+BenchmarkLibrary-4   	   10000	   3716104 ns/op	  160497 B/op	   20008 allocs/op
 PASS
 ok  	github.com/rdadbhawala/dutdip/samples/fbinject	38.098s
-Success: Benchmarks passed.'
+Success: Benchmarks passed.
+```

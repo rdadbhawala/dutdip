@@ -7,7 +7,8 @@
 * Can't implement interfaces directly.
 
 ## Benchmark (Singleton)
-`BenchmarkLibrary-4   	20000000	        99.0 ns/op	      16 B/op	       1 allocs/op
+```go
+BenchmarkLibrary-4      30000000                49.9 ns/op            16 B/op          1 allocs/op
 PASS
-ok  	github.com/rdadbhawala/dutdip/samples/funcVars	2.281s
-Success: Benchmarks passed.`
+ok      github.com/rdadbhawala/dutdip/samples/funcVars  2.790s
+```

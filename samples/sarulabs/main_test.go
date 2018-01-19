@@ -38,3 +38,30 @@ func BenchmarkLibrary(tb *testing.B) {
 		}
 	}
 }
+
+func BenchmarkSingleton(tb *testing.B) {
+	b, err := di.NewBuilder()
+	if err != nil {
+		fmt.Println("Error in di.NewBuilder: ", err)
+		return
+	}
+	b.AddDefinition(di.Definition{
+		Name: "libDep",
+		Build: func(ctx di.Context) (interface{}, error) {
+			return library.NewDependency(), nil
+		},
+	})
+	b.AddDefinition(di.Definition{
+		Name: "srvImpl",
+		Build: func(ctx di.Context) (interface{}, error) {
+			return service.NewService(ctx.Get("libDep").(library.Dependency)), nil
+		},
+	})
+	ctx := b.Build()
+	for i := 0; i < tb.N; i++ {
+		_, ok := ctx.Get("srvImpl").(service.Service)
+		if !ok {
+			tb.Error("Error Casting")
+		}
+	}
+}

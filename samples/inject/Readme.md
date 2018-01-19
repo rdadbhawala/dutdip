@@ -9,7 +9,9 @@
 * Do I need to create a new Definition for every instantiation of Service/ Dependency in code?
 
 ## Benchmark
-`BenchmarkLibrary-4   	  300000	      6853 ns/op	     685 B/op	      14 allocs/op
+```go
+BenchmarkLibrary-4   	  300000	      6853 ns/op	     685 B/op	      14 allocs/op
 PASS
 ok  	github.com/rdadbhawala/dutdip/samples/inject	2.320s
-Success: Benchmarks passed.`
+Success: Benchmarks passed.
+```
