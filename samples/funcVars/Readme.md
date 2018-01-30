@@ -8,7 +8,8 @@
 
 ## Benchmark (Singleton)
 ```go
-BenchmarkLibrary-4      30000000                49.9 ns/op            16 B/op          1 allocs/op
+BenchmarkLibrary-4      30000000                47.1 ns/op            16 B/op          1 allocs/op
+BenchmarkSingleton-4    1000000000               2.71 ns/op            0 B/op          0 allocs/op
 PASS
-ok      github.com/rdadbhawala/dutdip/samples/funcVars  2.790s
+ok      github.com/rdadbhawala/dutdip/samples/funcVars  5.320s
 ```

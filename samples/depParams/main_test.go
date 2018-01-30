@@ -14,7 +14,14 @@ func BenchmarkService(b *testing.B) {
 	// s.Feature()
 }
 
-func BenchmarkSintleton(b *testing.B) {
+func BenchmarkCall(b *testing.B) {
+	s := service.NewService(library.NewDependency())
+	for i := 0; i < b.N; i++ {
+		s.Shh()
+	}
+}
+
+func BenchmarkSingleton(b *testing.B) {
 	service.SingletonSetup(library.NewDependency())
 	for i := 0; i < b.N; i++ {
 		service.NewSingletonService()

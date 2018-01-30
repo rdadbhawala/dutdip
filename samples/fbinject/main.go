@@ -20,5 +20,5 @@ func main() {
 	}
 	s.Feature()
 
-	var s2 service.Impl
+	//var s2 service.Impl
 }

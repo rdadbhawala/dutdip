@@ -12,3 +12,10 @@ func BenchmarkLibrary(b *testing.B) {
 		service.NewService(library.NewDependency())
 	}
 }
+
+func BenchmarkSingleton(b *testing.B) {
+	service.SingletonSetup(library.NewDependency())
+	for i := 0; i < b.N; i++ {
+		service.NewSingletonService()
+	}
+}

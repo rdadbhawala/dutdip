@@ -9,6 +9,7 @@ import (
 // Service interface is a service
 type Service interface {
 	Feature()
+	Shh()
 }
 
 // NewService ...
@@ -22,6 +23,10 @@ type serviceImpl struct {
 
 func (s *serviceImpl) Feature() {
 	s.d.Operation()
+}
+
+func (s *serviceImpl) Shh() {
+	s.d.Silent()
 }
 
 var singletonService Service
