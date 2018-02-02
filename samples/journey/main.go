@@ -9,5 +9,5 @@ import (
 
 func main() {
 	fmt.Println("Main.Main")
-	feature.NewService(library.NewDependency()).Function()
+	feature.NewService(library.NewDependency).Function()
 }
