@@ -7,16 +7,15 @@ import (
 )
 
 type ServiceImpl struct {
-	d model.NewDependency
-	a model.NewAnotherDep
+	f *model.Functions
 }
 
 func (s *ServiceImpl) Function() {
 	fmt.Println("\tService.Function")
-	s.d().Operation()
-	s.a().AnotherOp()
+	s.f.NewDependency().Operation()
+	s.f.NewAnotherDep().AnotherOp()
 }
 
-func NewService(dep model.NewDependency, ano model.NewAnotherDep) model.Service {
-	return &ServiceImpl{dep, ano}
+func NewService(f *model.Functions) model.Service {
+	return &ServiceImpl{f}
 }

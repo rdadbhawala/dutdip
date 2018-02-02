@@ -16,15 +16,19 @@ type AnotherDep interface {
 
 type NewAnotherDep func() AnotherDep
 
-type FuncFact struct {
+type Functions struct {
 	nd NewDependency
 	na NewAnotherDep
 }
 
-func (f *FuncFact) NewDependency() Dependency {
+func (f *Functions) NewDependency() Dependency {
 	return f.nd()
 }
 
-func (f *FuncFact) NewAnotherDep() AnotherDep {
+func (f *Functions) NewAnotherDep() AnotherDep {
 	return f.na()
+}
+
+func NewFunctions(nd NewDependency, na NewAnotherDep) *Functions {
+	return &Functions{nd, na}
 }
