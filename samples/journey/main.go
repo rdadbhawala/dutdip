@@ -10,10 +10,11 @@ import (
 func main() {
 	fmt.Println("Main.Main")
 	f := &mainFactory{}
-	feature.NewService(f).Function()
+	f.NewService(f).Function()
 }
 
 type mainFactory struct {
 	library.DependencyFactoryImpl
 	library.AnotherDepFactoryImpl
+	feature.ServiceFactoryImpl
 }

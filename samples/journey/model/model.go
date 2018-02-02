@@ -12,6 +12,10 @@ type Service interface {
 	Function()
 }
 
+type ServiceFactory interface {
+	NewService() Service
+}
+
 type AnotherDep interface {
 	AnotherOp()
 }

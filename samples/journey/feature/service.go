@@ -16,6 +16,8 @@ func (s *ServiceImpl) Function() {
 	s.f.NewAnotherDep().AnotherOp()
 }
 
-func NewService(f model.SuperFactory) model.Service {
+type ServiceFactoryImpl struct{}
+
+func (s ServiceFactoryImpl) NewService(f model.SuperFactory) model.Service {
 	return &ServiceImpl{f}
 }
