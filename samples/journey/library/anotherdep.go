@@ -12,6 +12,8 @@ func (a *AnotherDepImpl) AnotherOp() {
 	fmt.Println("\t\tAnotherDep.AnotherOp")
 }
 
-func NewAnotherDep() model.AnotherDep {
+type AnotherDepFactoryImpl struct{}
+
+func (a AnotherDepFactoryImpl) NewAnotherDep() model.AnotherDep {
 	return &AnotherDepImpl{}
 }

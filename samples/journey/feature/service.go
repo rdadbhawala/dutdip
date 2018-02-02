@@ -7,7 +7,7 @@ import (
 )
 
 type ServiceImpl struct {
-	f *model.Functions
+	f model.SuperFactory
 }
 
 func (s *ServiceImpl) Function() {
@@ -16,6 +16,6 @@ func (s *ServiceImpl) Function() {
 	s.f.NewAnotherDep().AnotherOp()
 }
 
-func NewService(f *model.Functions) model.Service {
+func NewService(f model.SuperFactory) model.Service {
 	return &ServiceImpl{f}
 }
