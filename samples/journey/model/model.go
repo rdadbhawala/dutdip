@@ -2,6 +2,7 @@ package model
 
 type Dependency interface {
 	Operation()
+	Release()
 }
 
 type DependencyFactory interface {

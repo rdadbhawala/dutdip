@@ -12,7 +12,9 @@ type ServiceImpl struct {
 
 func (s *ServiceImpl) Function() {
 	fmt.Println("\tService.Function")
-	s.f.NewDependency().Operation()
+	dep := s.f.NewDependency()
+	defer dep.Release()
+	dep.Operation()
 	s.f.NewAnotherDep().AnotherOp()
 }
 

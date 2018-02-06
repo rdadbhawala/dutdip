@@ -12,6 +12,10 @@ func (d *DependencyImpl) Operation() {
 	fmt.Println("\t\tDependency.Operation")
 }
 
+func (d *DependencyImpl) Release() {
+	fmt.Println("\t\tDependency.Release")
+}
+
 type DependencyFactoryImpl struct{}
 
 func (d DependencyFactoryImpl) NewDependency() model.Dependency {
