@@ -5,12 +5,13 @@ import (
 
 	"github.com/rdadbhawala/dutdip/samples/journey/feature"
 	"github.com/rdadbhawala/dutdip/samples/journey/library"
+	"github.com/rdadbhawala/dutdip/samples/journey/model"
 )
 
 func main() {
 	fmt.Println("Main.Main")
-	f := &mainFactory{}
-	f.NewService(f).Function()
+	model.SF = &mainFactory{}
+	model.SF.NewService().Function()
 }
 
 type mainFactory struct {

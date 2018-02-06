@@ -6,20 +6,18 @@ import (
 	"github.com/rdadbhawala/dutdip/samples/journey/model"
 )
 
-type ServiceImpl struct {
-	f model.SuperFactory
-}
+type ServiceImpl struct{}
 
 func (s *ServiceImpl) Function() {
 	fmt.Println("\tService.Function")
-	dep := s.f.NewDependency()
+	dep := model.SF.NewDependency()
 	defer dep.Release()
 	dep.Operation()
-	s.f.NewAnotherDep().AnotherOp()
+	model.SF.NewAnotherDep().AnotherOp()
 }
 
 type ServiceFactoryImpl struct{}
 
-func (s ServiceFactoryImpl) NewService(f model.SuperFactory) model.Service {
-	return &ServiceImpl{f}
+func (s ServiceFactoryImpl) NewService() model.Service {
+	return &ServiceImpl{}
 }

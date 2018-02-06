@@ -28,4 +28,5 @@ type AnotherDepFactory interface {
 type SuperFactory interface {
 	DependencyFactory
 	AnotherDepFactory
+	ServiceFactory
 }
