@@ -15,7 +15,8 @@ func main() {
 }
 
 type mainFactory struct {
-	library.DependencyFactoryImpl
+	// library.DependencyFactoryImpl
+	library.SingletonDependency
 	library.AnotherDepFactoryImpl
 	feature.ServiceFactoryImpl
 }
