@@ -12,11 +12,16 @@ func main() {
 	si := inject.NewAutoProvider(service.NewService)
 	di := inject.NewProvider(library.NewDependency)
 
-	// resolve a and all its (transitive) dependencies
 	var s service.Service
 	var d library.Dependency
 	graph.Define(&s, si)
 	graph.Define(&d, di)
 	graph.Resolve(&s)
 	s.Feature()
+
+	// var s2 service.Service
+	// graph.Define(&s2, si)
+	// graph.Resolve(&s2)
+	// fmt.Println("Singleton S: ", s == s2)
+	// fmt.Println("Singleton S.D: ", s.GetDependency() == s2.GetDependency())
 }

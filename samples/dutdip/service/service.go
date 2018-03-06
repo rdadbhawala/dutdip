@@ -27,23 +27,23 @@ func (s *FactoryImpl) NewService() model.Service {
 	return &serviceImpl{model.F.NewDependency()}
 }
 
-// FactoryImplDep ...
-type FactoryImplDep struct {
-	D model.DepFactory
-}
+// // FactoryImplDep ...
+// type FactoryImplDep struct {
+// 	D model.DepFactory
+// }
 
-// NewService ...
-func (f *FactoryImplDep) NewService() model.Service {
-	return &serviceImpl{f.D.NewDependency()}
-}
+// // NewService ...
+// func (f *FactoryImplDep) NewService() model.Service {
+// 	return &serviceImpl{f.D.NewDependency()}
+// }
 
-// FactoryImplSep ...
-type FactoryImplSep struct{}
+// // FactoryImplSep ...
+// type FactoryImplSep struct{}
 
-// NewService ...
-func (fs *FactoryImplSep) NewService() model.Service {
-	return &serviceImpl{model.D.NewDependency()}
-}
+// // NewService ...
+// func (fs *FactoryImplSep) NewService() model.Service {
+// 	return &serviceImpl{model.D.NewDependency()}
+// }
 
 // FactoryImplSingleton ...
 type FactoryImplSingleton struct {

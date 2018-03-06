@@ -36,13 +36,13 @@ func main() {
 	srv.Feature()
 
 	srv2 := sctx.Get("srvImpl").(service.Service)
-	fmt.Println("Singleton: ", srv == srv2)
+	fmt.Println("Singleton: 1 == 2", srv == srv2)
 
-	sctx, _ = ctx.SubContext()
-	srv3 := sctx.Get("srvImpl").(service.Service)
-	fmt.Println("Singleton: ", srv == srv3)
-	fmt.Println("Singleton: ", srv2 == srv3)
+	sctx2, _ := ctx.SubContext()
+	srv3 := sctx2.Get("srvImpl").(service.Service)
+	fmt.Println("Singleton: 1 == 3", srv == srv3)
+	fmt.Println("Singleton: 2 == 3", srv2 == srv3)
 
-	srv4 := sctx.Get("srvImpl").(service.Service)
-	fmt.Println("Singleton: ", srv3 == srv4)
+	srv4 := sctx2.Get("srvImpl").(service.Service)
+	fmt.Println("Singleton: 3 == 4", srv3 == srv4)
 }

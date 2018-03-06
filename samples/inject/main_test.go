@@ -15,10 +15,10 @@ func BenchmarkSingletonDependency(b *testing.B) {
 	di := inject.NewProvider(library.NewDependency)
 	var d library.Dependency
 	graph.Define(&d, di)
+	var s service.Service
+	graph.Define(&s, si)
 
 	for i := 0; i < b.N; i++ {
-		var s service.Service
-		graph.Define(&s, si)
 		graph.Resolve(&s)
 	}
 }
@@ -26,9 +26,9 @@ func BenchmarkSingletonDependency(b *testing.B) {
 func BenchmarkLibrary(b *testing.B) {
 	graph := inject.NewGraph()
 
-	di := inject.NewProvider(library.NewDependency)
 	for i := 0; i < b.N; i++ {
 		var d library.Dependency
+		di := inject.NewProvider(library.NewDependency)
 		graph.Define(&d, di)
 		si := inject.NewProvider(service.NewService, &d)
 		var s service.Service
