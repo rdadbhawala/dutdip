@@ -1,5 +1,15 @@
 package model
 
+// AnotherDep interface
+type AnotherDep interface {
+	OneMoreOp()
+}
+
+// AnoFactory ...
+type AnoFactory interface {
+	NewAnotherDep() AnotherDep
+}
+
 // Dependency interface
 type Dependency interface {
 	Operation()
